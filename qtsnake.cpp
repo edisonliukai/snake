@@ -128,10 +128,10 @@ void QtSnake::paintEvent(QPaintEvent *event)
     painter.setPen(pen);
     painter.setFont(font);
     painter.drawText(20,20,QString("当前分数: ")+QString("%1").arg(snake.length()));
-    if(snakeStrike()||(snake.at(0).x()-snakeNodeWidth < 0)//向左边撞墙
-            ||(snake.at(0).x()+snakeNodeWidth*2 > this->width())//向右边撞墙
-            ||(snake.at(0).y()+snakeNodeHeight*2 > this->height())//向下撞墙
-            ||(snake.at(0).y()-snakeNodeHeight < 0)){//向上撞墙
+    if(snakeStrike()||(snake.at(0).x()-snakeNodeWidth < -10)//向左边撞墙
+            ||(snake.at(0).x()+snakeNodeWidth*2 > this->width()+10)//向右边撞墙
+            ||(snake.at(0).y()+snakeNodeHeight*2 > this->height()+10)//向下撞墙
+            ||(snake.at(0).y()-snakeNodeHeight < -10)){//向上撞墙
         gameEnd();
         painter.setFont(font);
         painter.drawText((this->width()-40)/2,(this->height()-30)/2,QString("GAME OVER!"));
